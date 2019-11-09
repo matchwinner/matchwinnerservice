@@ -3,11 +3,15 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BackfillComponent } from './backfill/backfill.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 @NgModule({
   declarations: [
-    AppComponent
-  ],
+    AppComponent,
+    BackfillComponent,
+    LoginFormComponent,
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule

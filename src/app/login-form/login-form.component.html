@@ -1,0 +1,33 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<div class="w3-card w3-round-large">
+  <div class="w3-container w3-indigo w3-round-large">
+      <h3>Dashboard Login</h3>
+  </div>
+
+  <form  class="w3-container w3-round-large">
+    <div class="w3-panel w3-text-red" style="height:3em; font-weight:bold;"> {{ errmsg }}</div>
+
+    <p>
+      <label>Employee ID : </label>
+      <input type="text" required class="w3-input" formControlName="userid">
+    </p>
+
+    <p>
+      <label>Password : </label>
+      <input type="password" required class="w3-input" formControlName="password">
+    </p>
+
+    <br>
+
+    
+
+    <p>
+      <button class = "w3-btn w3-indigo w3-round-large" style="width:50%" type="submit">Login</button>
+    </p>
+
+    <br>
+
+    <br>
+  </form>
+</div>

@@ -28,20 +28,20 @@ export class LoginPage implements OnInit {
       this.router.navigateByUrl('/tabs');
     }
     console.log(localStorage.getItem('userID'));
-     
-    if(localStorage.getItem('userID'))
-    {
-      $.ajax({url:"http://localhost:5000/pageLoad", method:"post", data:{"uID":localStorage.getItem('userID')}})
-      .done((data)=>{
-     
-      if (data[0].userStatus=='OUT')
+      if(localStorage.getItem('userID'))
       {
-        console.log('Log out on tab close worked. DB updated.') 
-        console.log(data);
-        localStorage.removeItem('userID');
+        $.ajax({url:"http://localhost:5000/pageLoad", method:"post", data:{"uID":localStorage.getItem('userID')}})
+        .done((data)=>{
+       
+        if (data[0].userStatus=='OUT')
+        {
+          console.log('Log out on tab close worked. DB updated.') 
+          console.log(data);
+          localStorage.removeItem('userID');
+        }
+       })
       }
-     })
-    }
+    
 
   }
 
@@ -71,7 +71,6 @@ export class LoginPage implements OnInit {
           {
             // this.loginForm.setValue('').userid.;
             // this.loginForm.value.password='';
-            //this.ngOnDestroy();
             this.errmsg='';
             this.router.navigateByUrl('/tabs');
           }
@@ -84,13 +83,6 @@ export class LoginPage implements OnInit {
         console.log(data[0]);
         console.log(data[0].userStatus);
     })
-    
-  }
-
-  ngOnDestroy()
-  {
-    
-
     
   }
 

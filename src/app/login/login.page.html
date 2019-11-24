@@ -7,6 +7,7 @@
 	
         <h2>ACCOUNT DETAILS</h2>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+        <br> 
     <p>Email</p>
     <input type="text" name="userid" placeholder="Enter Your email ID" required formControlName="userid">
     <p>Password</p>
@@ -15,7 +16,8 @@
     <!-- <input type="submit"  class="btn" value="Login"> -->
     <h4>{{errmsg}}</h4>
     </form>
-    
+    <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<ion-label color="light">Not an existing user? </ion-label>
+      <a href="/registration">Register</a>
       </div>
       </body>
 </ion-content>

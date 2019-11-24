@@ -16,33 +16,17 @@ export class LoginPage implements OnInit {
     password: new FormControl()
   });
  errmsg='';
- key = 'loginStatus';
+ //key = 'loginStatus';
   constructor(private navController: NavController, private router:Router) { 
 
   }
 
   ngOnInit() {
     this.errmsg='';
-    if(sessionStorage.getItem(this.key)=='IN')
+    if(localStorage.getItem('loginStatus')=='IN')
     {
       this.router.navigateByUrl('/tabs');
     }
-    console.log(localStorage.getItem('userID'));
-      if(localStorage.getItem('userID'))
-      {
-        $.ajax({url:"http://localhost:5000/pageLoad", method:"post", data:{"uID":localStorage.getItem('userID')}})
-        .done((data)=>{
-       
-        if (data[0].userStatus=='OUT')
-        {
-          console.log('Log out on tab close worked. DB updated.') 
-          console.log(data);
-          localStorage.removeItem('userID');
-        }
-       })
-      }
-    
-
   }
 
   public nameResolver()
@@ -63,18 +47,20 @@ export class LoginPage implements OnInit {
       }
        else 
        {
-          sessionStorage.setItem(this.key,data[0].userStatus);
+          //sessionStorage.setItem(this.key,data[0].userStatus);
           localStorage.setItem('userID',data[0].userID);
+          localStorage.setItem('userName',data[0].userName);
+          localStorage.setItem('loginStatus',data[0].userStatus);
           // localStorage.setItem('userName',data[0].userName);
           // localStorage.setItem(this.key,data[0].userStatus);
-          if(sessionStorage.getItem(this.key)=='IN')
+          if(localStorage.getItem('loginStatus')=='IN')
           {
             // this.loginForm.setValue('').userid.;
             // this.loginForm.value.password='';
             this.errmsg='';
             this.router.navigateByUrl('/tabs');
           }
-          else if(sessionStorage.getItem(this.key)=='OUT')
+          else if(localStorage.getItem('loginStatus')=='OUT')
           {
             this.errmsg='Please Login to continue'
           }

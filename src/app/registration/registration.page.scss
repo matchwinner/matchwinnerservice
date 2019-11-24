@@ -4,7 +4,7 @@ body
 {
 margin:0;
 padding:0;
-background: url(stadium.jpg);
+background: url(audience.jpg);
 background-size: cover;
 font-family: sans-serif;
 }
@@ -33,12 +33,12 @@ left:calc(50% - 50px);
 .logo{
     position: absolute;
 	border-radius:10px;
-top:2%;
+top:1%;
 left:50%;
 transform: translate(-50%,-50%);
 width:350px;
-height:100px;
-padding:80px 40px ;
+height:50px;
+padding:30px 40px ;
 }
 
 .loginBox
@@ -49,15 +49,15 @@ top:60%;
 left:50%;
 transform: translate(-50%,-50%);
 width:350px;
-height:420px;
-padding:40px 40px ;
+height:450px;
+padding:30px 40px ;
 box-sizing: border-box;
 background:rgba(44, 44, 44, 0.5);
 }
 h2 
 {
   margin:0;
-padding:0 0 20px;
+//padding:0 0 20px;
 color:rgb(232, 235, 236);
 text-align:center;
 font-family: calibri;
@@ -92,6 +92,7 @@ margin-bottom:20px;
 }
 
 .loginBox input[type="text"],
+.loginBox input[type="number"],
 .loginBox input[type="password"]
 {
 
@@ -99,8 +100,8 @@ margin-bottom:20px;
 border-bottom: 1px solid white;
 background:transparent;
 outline:none;
-height:40px;
-font-size:16px;
+height:20px;
+font-size:12px;
 color:white;
 }
 

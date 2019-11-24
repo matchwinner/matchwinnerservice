@@ -1,0 +1,26 @@
+<ion-content>
+    <body>
+        <div class="logo">
+          <img src="../../assets/logo.png">
+        </div>
+        <div class="loginBox">    
+        <h2>ENTER YOUR DETAILS</h2>
+        <br>  
+        <form [formGroup]="regForm" (ngSubmit)="onSubmit()" >
+        <p>Enter your name:</p>
+        <input type="text" name="userName" required formControlName="userName">
+        <p>Enter your Email ID:</p>
+        <input type="text" name="userEmail" required formControlName="userEmail">
+        <p>Enter your Mobile No:</p>
+        <input type="number" name="userMobile" required formControlName="userMobile">
+        <p>Enter your Password:</p>
+        <input type="password" name="userPassword" required formControlName="userPassword">
+        <p>Confirm Password:</p>
+        <input type="password" name="confPassword" required formControlName="confPassword">
+        <ion-button type="submit" expand="full" router-direction="forward">Register</ion-button>
+        <!-- <input type="submit"  class="btn" value="Login"> -->
+        <h4>{{errmsg}}</h4>
+        </form>
+          </div>
+          </body>
+</ion-content>

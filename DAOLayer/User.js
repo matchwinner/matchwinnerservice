@@ -18,7 +18,7 @@ app.use(cors());
     database: 'matchWinner' 
 };
 
-app.post('/pageLoad', function (req, res) {
+app.post('/logout', function (req, res) {
 
   console.log(req.body);
  
@@ -29,7 +29,7 @@ app.post('/pageLoad', function (req, res) {
       var request = new sql.Request();
       
       request.input('userID', sql.VarChar(30), req.body.uID);
-      request.execute('SP_InitiateLogOutOnTabClose').then(function(err, recordsets, returnValue, affected) {
+      request.execute('SP_InitiateLogOut').then(function(err, recordsets, returnValue, affected) {
           console.dir(err);
           request.query("select userStatus from userData where userID in ('"+req.body.uID+"')", function (err, recordset) {
             if (err) console.log(err)
@@ -59,7 +59,7 @@ app.post('/login', function (req, res) {
         
         request.input('userEmail', sql.VarChar(30), req.body.uMail);
         request.input('userPassword',sql.VarChar(30), req.body.uPwd);
-        request.execute('SP_GetCredentialsBasedOnstatus').then(function(err, recordsets, returnValue, affected) {
+        request.execute('SP_InitiateLogin').then(function(err, recordsets, returnValue, affected) {
             console.dir(err);
             request.query("select userID,userName,userStatus from userData where userEmail in ('"+req.body.uMail+"') and userPassword in ('"+req.body.uPwd+"')", function (err, recordset) {
               if (err) console.log(err)

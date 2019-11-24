@@ -1,0 +1,21 @@
+<ion-content>
+  <body>
+    <div class="logo">
+      <img src="../../assets/logo.png">
+    </div>
+    <div class="loginBox">
+	
+        <h2>ACCOUNT DETAILS</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+    <p>Email</p>
+    <input type="text" name="userid" placeholder="Enter Your email ID" required formControlName="userid">
+    <p>Password</p>
+    <input type="password" name="password" placeholder="Enter Your Password" required formControlName="password">
+    <ion-button type="submit" expand="full" router-direction="forward">Login</ion-button>
+    <!-- <input type="submit"  class="btn" value="Login"> -->
+    <h4>{{errmsg}}</h4>
+    </form>
+    
+      </div>
+      </body>
+</ion-content>

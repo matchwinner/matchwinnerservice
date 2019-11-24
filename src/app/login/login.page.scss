@@ -1,0 +1,178 @@
+@import url(https://fonts.googleapis.com/css?family=Sofia);
+
+body
+{
+margin:0;
+padding:0;
+background: url(stadium.jpg);
+background-size: cover;
+font-family: sans-serif;
+}
+
+h1
+{
+	margin:70px;
+	padding:0 0 10px;
+	text-align:right;
+	font-size: 45px;
+	font-family: calibri;
+}
+
+.user
+{
+	width:100px;
+height:100px;
+border-radius:50%;
+overflow:hidden;
+position: absolute;
+top: calc(-100px/2);
+left:calc(50% - 50px);
+
+}
+
+.logo{
+    position: absolute;
+	border-radius:10px;
+top:2%;
+left:50%;
+transform: translate(-50%,-50%);
+width:350px;
+height:100px;
+padding:80px 40px ;
+}
+
+.loginBox
+{
+	position: absolute;
+	border-radius:10px;
+top:60%;
+left:50%;
+transform: translate(-50%,-50%);
+width:350px;
+height:420px;
+padding:80px 40px ;
+box-sizing: border-box;
+background:rgba(44, 44, 44, 0.5);
+}
+h2 
+{
+  margin:0;
+padding:0 0 20px;
+color:rgb(105, 182, 206);
+text-align:center;
+font-family: calibri;
+}
+h4 
+{
+	margin:0;
+padding:0 0 20px;
+color:rgb(230, 23, 23);
+text-align:center;
+font-family: calibri;
+}
+
+.loginBox p
+{
+margin:0;
+padding:0;
+font-weight:bold;
+color:mediumseagreen;
+}
+
+.loginBox input
+{
+width:100%;
+margin-bottom:20px;
+}
+
+.loginBox select
+{
+width:100%;
+margin-bottom:20px;
+}
+
+.loginBox input[type="text"],
+.loginBox input[type="password"]
+{
+
+	border:none;
+border-bottom: 1px solid white;
+background:transparent;
+outline:none;
+height:40px;
+font-size:16px;
+color:white;
+}
+
+#sel
+{
+border:none;
+border-bottom: 1px solid white;
+margin-top:10px;
+background:transparent;
+outline:none;
+height:22px;
+font-size:16px;
+color:white;
+}
+
+#op1
+{
+	background:transparent;
+}
+
+#op2
+{
+	background:transparent;
+}
+
+
+.btn {
+  background: #000000;
+  color: #959595;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 3px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  outline: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.btn:hover {
+  color: #8b8b8b;
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12);
+}
+.btn.btn-link {
+  background: #2196F3;
+  color: #d3eafd;
+}
+.btn.btn-link:hover {
+  background: #0d8aee;
+  color: #deeffd;
+}
+.btn.btn-submit {
+  background: #2196F3;
+  color: #bce0fb;
+}
+.btn.btn-submit:hover {
+  background: #0d8aee;
+  color: #deeffd;
+}
+.btn.btn-cancel {
+  background: #eee;
+}
+.btn.btn-cancel:hover {
+  background: #e1e1e1;
+  color: #8b8b8b;
+}
+
+.btn-box {
+  text-align: center;
+  margin: 50px 0;
+}
+
+
+

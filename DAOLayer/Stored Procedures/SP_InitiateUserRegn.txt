@@ -1,0 +1,28 @@
+USE [matchWinner]
+GO
+/****** Object:  StoredProcedure [dbo].[SP_InitiateUserRegn]    Script Date: 2019-11-26 3:13:37 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+ALTER PROCEDURE [dbo].[SP_InitiateUserRegn]
+	-- Add the parameters for the stored procedure here
+	@userName nvarchar(50),
+	@userEmail nvarchar(50),
+	@userMobile nvarchar(50),
+    @userPassword nvarchar(50),
+	@test nvarchar(50) OUTPUT
+AS
+BEGIN
+DECLARE @findUserID INTEGER;
+SET @test = 'NOT FOUND';
+	SET @findUserID = (select userID from  [dbo].[userData] where [userEmail] in (@userEmail))
+	if(@findUserID!='')
+		SET @test = 'FOUND';
+	else INSERT INTO [dbo].[userData] ([userName], [userPassword], [userEmail], [userMobile],[userRole],[userStatus]) VALUES (@userName, @userPassword, @userEmail, @userMobile, '', 'OUT');
+END

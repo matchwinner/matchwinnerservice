@@ -1,0 +1,23 @@
+USE [matchWinner]
+GO
+/****** Object:  StoredProcedure [dbo].[SP_InitiateLogOut]    Script Date: 2019-11-24 8:18:38 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+ALTER PROCEDURE [dbo].[SP_InitiateLogOut]
+	-- Add the parameters for the stored procedure here
+	@userID nvarchar(50)
+    
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+
+	UPDATE [dbo].[userData] SET userStatus = 'OUT' where userID IN (@userID)
+END

@@ -1,0 +1,27 @@
+USE [matchWinner]
+GO
+/****** Object:  StoredProcedure [dbo].[SP_InitiateLogin]    Script Date: 2019-11-24 8:18:36 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+ALTER PROCEDURE [dbo].[SP_InitiateLogin]
+	-- Add the parameters for the stored procedure here
+	@userEmail nvarchar(50),
+    @userPassword nvarchar(50)
+
+AS
+BEGIN
+DECLARE @findUserID INTEGER;
+DECLARE @findUserStatus varchar(10);
+	SET @findUserID = (select userID from  [dbo].[userData] where [userEmail] in (@userEmail) and [userPassword] in (@userPassword))
+	SET @findUserStatus = (select userStatus from  [dbo].[userData] where [userEmail] in (@userEmail) and [userPassword] in (@userPassword))
+
+	if(@findUserID!='' AND @findUserStatus = 'OUT')
+	UPDATE [dbo].[userData] SET userStatus = 'IN' where userID IN (@findUserID)
+END

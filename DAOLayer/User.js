@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 var cors = require('cors');
 app.use(cors());
-
+//var status = '';
 
   // config for your database
   var config = {
@@ -17,6 +17,32 @@ app.use(cors());
     server: 'BLRIDC52120896', 
     database: 'matchWinner' 
 };
+
+app.post('/register', function (req, res) {
+
+  console.log('listing request parameters');
+  console.log(req.body);
+ 
+  // connect to your database
+  sql.connect(config, function (err) {
+  
+      if (err) console.log(err);
+      var request = new sql.Request();
+
+      request.input('userName', sql.VarChar(30), req.body.uName);
+      request.input('userEmail', sql.VarChar(30), req.body.uMail);
+      request.input('userMobile', sql.VarChar(30), req.body.uMob);
+      request.input('userPassword', sql.VarChar(30), req.body.uPwd);
+      request.output('test', sql.VarChar(30));
+      request.execute('SP_InitiateUserRegn').then(function(err, recordsets, returnValue, affected) {
+        console.dir(err.output.test);
+        res.send(err.output.test);
+      }).catch(function(err) {
+        console.log(err);
+      });
+
+    })
+});
 
 app.post('/logout', function (req, res) {
 

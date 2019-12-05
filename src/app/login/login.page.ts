@@ -29,11 +29,25 @@ export class LoginPage implements OnInit {
     }
   }
 
-  public nameResolver()
+  public validateEmail()
   {
-    return this.loginForm.value.userid;
+    let uMail=this.loginForm.value.userid;
+    $.ajax({url:"http://localhost:5010/validateEmail", method:"post", data:{"uMail":uMail}})
+    .done((data)=>{
+      console.log(data);
+      if (data.validationStatus==0)
+          this.allowAccess();
+      else  if(data.validationStatus==1)
+          this.errmsg = 'Please enter an email ID';
+      else if(data.validationStatus==2)
+          this.errmsg = 'Please Enter a valid email ID';    
+    })
+
   }
-  onSubmit(){
+
+
+  public allowAccess()
+  {
     let uMail=this.loginForm.value.userid;
     let uPwd=this.loginForm.value.password;
     console.log(uMail);
@@ -47,16 +61,11 @@ export class LoginPage implements OnInit {
       }
        else 
        {
-          //sessionStorage.setItem(this.key,data[0].userStatus);
           localStorage.setItem('userID',data[0].userID);
           localStorage.setItem('userName',data[0].userName);
           localStorage.setItem('loginStatus',data[0].userStatus);
-          // localStorage.setItem('userName',data[0].userName);
-          // localStorage.setItem(this.key,data[0].userStatus);
           if(localStorage.getItem('loginStatus')=='IN')
           {
-            // this.loginForm.setValue('').userid.;
-            // this.loginForm.value.password='';
             this.errmsg='';
             this.router.navigateByUrl('/tabs');
           }
@@ -65,11 +74,12 @@ export class LoginPage implements OnInit {
             this.errmsg='Please Login to continue'
           }
        }
-       
         console.log(data[0]);
         console.log(data[0].userStatus);
     })
-    
+  }
+  onSubmit(){
+    this.validateEmail();
   }
 
 }
